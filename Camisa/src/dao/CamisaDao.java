@@ -14,12 +14,11 @@ import modelo.Camisa;
  */
 public class CamisaDao {
      public static boolean inserir(Camisa objeto) {
-        String sql = "INSERT INTO camisa (codigo, tamanho, cor) VALUES (?, ?, ?)";
+        String sql = "INSERT INTO camisa (tamanho, cor) VALUES (?, ?)";
         try {
             PreparedStatement ps = conexao.Conexao.getConexao().prepareStatement(sql);
-            ps.setInt(1, objeto.getCodigo());
-            ps.setString(2, objeto.getTamanho());
-            ps.setString(3, objeto.getCor());
+            ps.setString(1, objeto.getTamanho());
+            ps.setString(2, objeto.getCor());
             ps.executeUpdate();
             return true;
         } catch (SQLException | ClassNotFoundException ex) {
